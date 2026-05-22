@@ -1,6 +1,3 @@
-/*
- * Concepts: Abstract Class, Encapsulation, Inheritance, AtomicInteger, ReentrantLock (via BookingManager)
- */
 package model;
 
 import java.util.concurrent.atomic.AtomicInteger;
