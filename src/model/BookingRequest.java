@@ -1,6 +1,3 @@
-/*
- * Concepts: Encapsulation, BlockingQueue usage in BookingQueue
- */
 package model;
 
 public class BookingRequest {
