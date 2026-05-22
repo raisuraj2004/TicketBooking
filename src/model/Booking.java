@@ -1,6 +1,3 @@
-/*
- * Concepts: Encapsulation, Interface Implementation, Collections (used in BookingManager)
- */
 package model;
 
 public class Booking implements Printable {
