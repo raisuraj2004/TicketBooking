@@ -1,6 +1,3 @@
-/*
- * Concepts: Interface, Polymorphism
- */
 package model;
 
 public interface Bookable {
