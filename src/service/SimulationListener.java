@@ -1,6 +1,3 @@
-/*
- * Concepts: Callback Interface for Concurrency Simulation
- */
 package service;
 
 public interface SimulationListener {
