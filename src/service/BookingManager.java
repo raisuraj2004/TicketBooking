@@ -1,6 +1,3 @@
-/*
- * Concepts: Singleton Pattern, ReentrantLock, AtomicInteger, BlockingQueue, Collections, Stream API, Observer Pattern
- */
 package service;
 
 import java.util.ArrayList;
@@ -121,7 +118,6 @@ public class BookingManager implements Cancellable {
     }
 
     public List<Bookable> getAvailableEvents() {
-        // Stream API used for filtering available seats
         return events.stream().filter(e -> e.getAvailableSeats() > 0).collect(Collectors.toList());
     }
 
@@ -144,10 +140,9 @@ public class BookingManager implements Cancellable {
     public BookingResult<Booking> book(BookingRequest request) {
         BookingResult<Booking> result;
         try {
-            // BlockingQueue usage to accept booking requests safely
+
             bookingQueue.enqueue(request);
 
-            // ReentrantLock for seat locking (not synchronized)
             seatLock.lock();
             log("Lock acquired by " + Thread.currentThread().getName());
 
@@ -156,7 +151,7 @@ public class BookingManager implements Cancellable {
                 int qty = request.getQuantity();
 
                 if (event.getAvailableSeats() < qty) {
-                    waitlist.add(request); // LinkedList waitlist
+                    waitlist.add(request); 
                     throw new SeatUnavailableException("Not enough seats for " + event.getName(),
                             new IllegalStateException("Inventory check failed"));
                 }
@@ -167,7 +162,6 @@ public class BookingManager implements Cancellable {
                 }
 
                 if (event instanceof Venue) {
-                    // AtomicInteger update inside Venue
                     ((Venue) event).decrementSeats(qty);
                 }
 
@@ -176,7 +170,7 @@ public class BookingManager implements Cancellable {
                 Booking booking = new Booking(bookingId, request.getUserName(), request.getEmail(),
                         event.getName(), event.getId(), request.getSeatCategory(), qty, amount, "CONFIRMED");
 
-                bookingRegistry.put(bookingId, booking); // HashMap registry
+                bookingRegistry.put(bookingId, booking); 
                 result = new BookingResult<Booking>(true, "Booking confirmed", booking, null);
             } finally {
                 seatLock.unlock();
@@ -203,7 +197,6 @@ public class BookingManager implements Cancellable {
     }
 
     public void submitBookingAsync(final BookingRequest request, final java.util.function.Consumer<BookingResult<Booking>> callback) {
-        // ExecutorService runs booking tasks concurrently
         executor.submit(new Runnable() {
             @Override
             public void run() {
@@ -270,7 +263,6 @@ public class BookingManager implements Cancellable {
                 @Override
                 public void run() {
                     try {
-                        // Staggering to simulate real user timing
                         Thread.sleep(100 + new Random().nextInt(401));
                         List<Bookable> pool = getAllEvents();
                         if (pool.isEmpty()) {
@@ -349,7 +341,6 @@ public class BookingManager implements Cancellable {
                 }
             }
         } catch (Exception e) {
-            // ignore parsing errors
         }
     }
 
