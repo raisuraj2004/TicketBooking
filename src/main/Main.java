@@ -15,7 +15,6 @@ public class Main {
     public static void main(String[] args) {
         final BookingManager manager = BookingManager.getInstance();
 
-        // Seed events via Factory Pattern
         manager.addEvent(EventFactory.createEvent("movie", "E100", "The Silent Ocean", "2026-05-02", "IMAX Arena", 350, 80));
         manager.addEvent(EventFactory.createEvent("concert", "E101", "Neon Nights Live", "2026-05-10", "City Dome", 500, 120));
         manager.addEvent(EventFactory.createEvent("sport", "E102", "Cricket Cup Final", "2026-05-18", "National Stadium", 450, 150));
@@ -27,7 +26,6 @@ public class Main {
         manager.addEvent(EventFactory.createEvent("sport", "E108", "Bengaluru FC vs Goa", "2026-06-15", "Kanteerava Stadium", 420, 120));
         manager.addEvent(EventFactory.createEvent("sport", "E109", "Badminton Super Series", "2026-06-18", "KBA Arena", 380, 90));
 
-        // Load bookings from file
         for (Booking b : FileHandler.loadBookings("bookings.txt")) {
             manager.restoreBooking(b);
             Bookable event = manager.findEventById(b.getEventId());
