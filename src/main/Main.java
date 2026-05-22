@@ -1,6 +1,4 @@
-/*
- * Concepts: Swing App Entry, File I/O, Factory Pattern
- */
+
 package main;
 
 import javax.swing.SwingUtilities;
