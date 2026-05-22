@@ -1,6 +1,3 @@
-/*
- * Concepts: Custom Exception
- */
 package exception;
 
 public class BookingNotFoundException extends Exception {
