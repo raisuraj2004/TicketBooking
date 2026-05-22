@@ -1,6 +1,3 @@
-/*
- * Concepts: Inheritance, Polymorphism
- */
 package model;
 
 public class SportEvent extends Venue {
