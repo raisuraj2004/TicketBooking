@@ -1,6 +1,3 @@
-/*
- * Concepts: Custom Exception, Exception Chaining
- */
 package exception;
 
 public class PaymentFailedException extends Exception {
