@@ -1,6 +1,3 @@
-/*
- * Concepts: Observer Pattern (Interface)
- */
 package service;
 
 import model.Bookable;
