@@ -1,6 +1,3 @@
-/*
- * Concepts: Factory Pattern
- */
 package service;
 
 import model.Bookable;
