@@ -1,6 +1,4 @@
-/*
- * Concepts: Generics
- */
+
 package model;
 
 public class BookingResult<T> {
